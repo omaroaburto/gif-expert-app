@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const AddCategory = ({setCategories, categories})=> {
     const [inputValue, setInputValue] = useState('');
 
-    const handleInputChage = (e)=>{
+    const handleInputChange = (e)=>{
         setInputValue(e.target.value);
     }
 
@@ -12,7 +12,7 @@ const AddCategory = ({setCategories, categories})=> {
         e.preventDefault();
         const newCategory = document.querySelector('input');
         if(newCategory.value.length>0 && !categories.find(valor => valor === newCategory.value)){
-            await setCategories(myCategories =>[...myCategories, newCategory.value]);           
+            await setCategories(myCategories =>[ newCategory.value, ...myCategories]);           
          }
          newCategory.value = ""
     }
@@ -21,8 +21,9 @@ const AddCategory = ({setCategories, categories})=> {
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
+                placeholder="Búsqueda"
                 value={inputValue}
-                onChange={handleInputChage}
+                onChange={handleInputChange}
             />
         </form>
     )

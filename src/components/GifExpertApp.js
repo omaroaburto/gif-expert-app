@@ -1,29 +1,23 @@
 import React, {useState} from 'react'
 import AddCategory from './AddCategory';
+import { GifGrip } from './GifGrip';
 
 const GifExpertApp = () => {
     const [categories, setCategories] = useState([
-        'pokemon', 
-        'dark souls', 
-        'zelda'
+        'gatos' 
     ]);
-    /*
-    const handleAdd = async()=>{
-        const newCategory = document.querySelector('input'); 
-        if(newCategory.value.length>0 && !categories.find(valor => valor === newCategory.value)){
-           await setCategories(myCategories =>[...myCategories, newCategory.value]);           
-        }
-        newCategory.value = ""
-    }*/
+
     return (
         <>
           <h1>GifExpertApp</h1>
-          <hr/>
           <AddCategory setCategories = {setCategories} categories = {categories}/>
-           
+          <hr/> 
           <ul>
             {categories.map(category=>{
-                return <li key={category}>{category}</li>
+                return (<GifGrip 
+                    category={category}
+                    key={category}
+                />);
             })}
           </ul>  
         </>
